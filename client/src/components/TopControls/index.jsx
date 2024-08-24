@@ -1,7 +1,18 @@
-import React from 'react';
-import { TopControls, SearchInput, JobStatus, CreateJobButton } from './styledComponents.js';
+import React from "react";
+import {
+  TopControls,
+  SearchInput,
+  JobStatus,
+  CreateJobButton,
+} from "./styledComponents.js";
 
-const TopControlsComponent = ({ searchTerm, setSearchTerm, filterStatus, setFilterStatus, onCreateNewJob }) => (
+const TopControlsComponent = ({
+  searchTerm,
+  setSearchTerm,
+  filterStatus,
+  setFilterStatus,
+  onCreateNewJob,
+}) => (
   <TopControls>
     <SearchInput
       type="text"
@@ -19,10 +30,8 @@ const TopControlsComponent = ({ searchTerm, setSearchTerm, filterStatus, setFilt
       <option value="closed">Closed</option>
       <option value="draft">Draft</option>
     </JobStatus>
-    
-    <CreateJobButton onClick={onCreateNewJob}>
-      Create New Job
-    </CreateJobButton>
+
+    <CreateJobButton onClick={onCreateNewJob}>Create New Job</CreateJobButton>
   </TopControls>
 );
 

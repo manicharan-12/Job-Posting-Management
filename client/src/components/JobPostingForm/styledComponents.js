@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import Select from 'react-select';
+import styled from "styled-components";
+import Select from "react-select";
 
 export const PopupOverlay = styled.div`
   position: fixed;
@@ -45,7 +45,7 @@ export const Label = styled.label`
 export const CheckboxContainer = styled.label`
   display: flex;
   align-items: flex-start;
-  margin-left:auto;
+  margin-left: auto;
 
   font-weight: 300;
   color: #333;
@@ -103,7 +103,7 @@ export const Button = styled.button`
 `;
 
 export const SubmitButton = styled(Button)`
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
 
   &:hover {
@@ -123,17 +123,17 @@ export const ActionButton = styled(Button)`
 export const ReactSelectStyles = {
   control: (provided, state) => ({
     ...provided,
-    borderColor: state.isFocused ? '#4CAF50 !important' : '#ccc !important',
-    '&:hover': {
-      borderColor: '#aaa !important',
+    borderColor: state.isFocused ? "#4CAF50 !important" : "#ccc !important",
+    "&:hover": {
+      borderColor: "#aaa !important",
     },
-    boxShadow: state.isFocused ? '0 0 0 1px #4CAF50 !important' : 'none',
+    boxShadow: state.isFocused ? "0 0 0 1px #4CAF50 !important" : "none",
   }),
   option: (provided, state) => ({
     ...provided,
-    backgroundColor: state.isSelected ? '#4CAF50 !important' : 'white',
-    '&:hover': {
-      backgroundColor: '#e8f5e9 !important',
+    backgroundColor: state.isSelected ? "#4CAF50 !important" : "white",
+    "&:hover": {
+      backgroundColor: "#e8f5e9 !important",
     },
   }),
 };

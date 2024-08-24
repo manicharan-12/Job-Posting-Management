@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Overlay,
   Content,
@@ -6,8 +6,8 @@ import {
   TemplateOptions,
   NewTemplateButton,
   TemplateButton,
-  CancelButton
-} from './styledComponents.js';
+  CancelButton,
+} from "./styledComponents.js";
 
 const TemplateSelector = ({ onSelect, onCancel, savedTemplates }) => {
   return (

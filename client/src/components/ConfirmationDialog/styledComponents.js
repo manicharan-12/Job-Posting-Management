@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const ConfirmationMessage = styled.div`
   background-color: #d4edda;

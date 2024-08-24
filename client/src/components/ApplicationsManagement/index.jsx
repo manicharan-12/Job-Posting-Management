@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import candidatesData from '../data/candidates.json';
-import ApplicationDetails from '../ApplicationDetails';
-import ApplicationsTable from '../ApplicationsTable';
+import React, { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import candidatesData from "../data/candidates.json";
+import ApplicationDetails from "../ApplicationDetails";
+import ApplicationsTable from "../ApplicationsTable";
 
 const Container = styled.div`
   max-width: 1200px;
@@ -52,8 +52,8 @@ const ApplicationsManagement = () => {
 
   useEffect(() => {
     const initialStatuses = {};
-    candidatesData.forEach(candidate => {
-      initialStatuses[candidate.id] = 'Under Review';
+    candidatesData.forEach((candidate) => {
+      initialStatuses[candidate.id] = "Under Review";
     });
     setCandidateStatuses(initialStatuses);
   }, []);
@@ -67,22 +67,22 @@ const ApplicationsManagement = () => {
   }, []);
 
   const handleShortlist = useCallback((candidateId) => {
-    setShortlistedCandidates(prev => 
+    setShortlistedCandidates((prev) =>
       prev.includes(candidateId)
-        ? prev.filter(id => id !== candidateId)
+        ? prev.filter((id) => id !== candidateId)
         : [...prev, candidateId]
     );
   }, []);
 
   const handleStatusUpdate = useCallback((candidateId, newStatus) => {
-    setCandidateStatuses(prev => ({
+    setCandidateStatuses((prev) => ({
       ...prev,
-      [candidateId]: newStatus
+      [candidateId]: newStatus,
     }));
   }, []);
 
   const handleGoBack = () => {
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -97,13 +97,15 @@ const ApplicationsManagement = () => {
         onStatusUpdate={handleStatusUpdate}
       />
       {selectedCandidate && (
-        <ApplicationDetails 
-          candidate={selectedCandidate} 
+        <ApplicationDetails
+          candidate={selectedCandidate}
           onClose={handleCloseDetails}
           onShortlist={handleShortlist}
           isShortlisted={shortlistedCandidates.includes(selectedCandidate.id)}
           onStatusUpdate={handleStatusUpdate}
-          currentStatus={candidateStatuses[selectedCandidate.id] || 'Under Review'}
+          currentStatus={
+            candidateStatuses[selectedCandidate.id] || "Under Review"
+          }
         />
       )}
     </Container>
@@ -111,9 +113,6 @@ const ApplicationsManagement = () => {
 };
 
 export default React.memo(ApplicationsManagement);
-
-
-
 
 // import React, { useState, useEffect, useCallback } from 'react';
 // import candidatesData from '../data/candidates.json';
@@ -143,7 +142,7 @@ export default React.memo(ApplicationsManagement);
 //   }, []);
 
 //   const handleShortlist = useCallback((candidateId) => {
-//     setShortlistedCandidates(prev => 
+//     setShortlistedCandidates(prev =>
 //       prev.includes(candidateId)
 //         ? prev.filter(id => id !== candidateId)
 //         : [...prev, candidateId]
@@ -168,8 +167,8 @@ export default React.memo(ApplicationsManagement);
 //         onStatusUpdate={handleStatusUpdate}
 //       />
 //       {selectedCandidate && (
-//         <ApplicationDetails 
-//           candidate={selectedCandidate} 
+//         <ApplicationDetails
+//           candidate={selectedCandidate}
 //           onClose={handleCloseDetails}
 //           onShortlist={handleShortlist}
 //           isShortlisted={shortlistedCandidates.includes(selectedCandidate.id)}

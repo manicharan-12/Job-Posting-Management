@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://job-posting-management.onrender.com";
 
 const api = axios.create({
   baseURL: API_URL,
@@ -19,16 +19,25 @@ export const submitJobPosting = async (jobPosting) => {
     const formattedJobPosting = {
       ...jobPosting,
       jobTitle: jobPosting.jobTitle.value || jobPosting.jobTitle,
-      jobType: jobPosting.jobType.map(type => type.value || type),
+      jobType: jobPosting.jobType.map((type) => type.value || type),
       department: jobPosting.department.value || jobPosting.department,
       jobLevel: jobPosting.jobLevel.value || jobPosting.jobLevel,
-      technicalSkills: jobPosting.technicalSkills.map(skill => skill.value || skill),
-      languagesRequired: jobPosting.languagesRequired.map(lang => lang.value || lang),
+      technicalSkills: jobPosting.technicalSkills.map(
+        (skill) => skill.value || skill
+      ),
+      languagesRequired: jobPosting.languagesRequired.map(
+        (lang) => lang.value || lang
+      ),
       salaryRange: {
         ...jobPosting.salaryRange,
-        currency: jobPosting.salaryRange.currency.value || jobPosting.salaryRange.currency,
-        formatted: `${jobPosting.salaryRange.currency.value || jobPosting.salaryRange.currency} ${jobPosting.salaryRange.min}-${jobPosting.salaryRange.max}`
-      }
+        currency:
+          jobPosting.salaryRange.currency.value ||
+          jobPosting.salaryRange.currency,
+        formatted: `${
+          jobPosting.salaryRange.currency.value ||
+          jobPosting.salaryRange.currency
+        } ${jobPosting.salaryRange.min}-${jobPosting.salaryRange.max}`,
+      },
     };
     const response = await api.post("/job-postings", formattedJobPosting);
     return response.data;

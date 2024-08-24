@@ -147,23 +147,32 @@ const JobPostingForm = (props) => {
   };
 
   const onSubmitForm = async (data) => {
-    if (!data.jobTitle || data.jobLocation.length === 0 || !data.companyName || !data.companyWebsite || !data.linkToApply || !data.applicationDeadline) {
-      alert('Please fill in all required fields.');
+    if (
+      !data.jobTitle ||
+      data.jobLocation.length === 0 ||
+      !data.companyName ||
+      !data.companyWebsite ||
+      !data.linkToApply ||
+      !data.applicationDeadline
+    ) {
+      alert("Please fill in all required fields.");
       return;
     }
-    
+
     const formattedJobPosting = {
       ...data,
       applicationDeadline: data.applicationDeadline,
       salaryRange: {
         ...data.salaryRange,
         currency: data.salaryRange.currency.value || data.salaryRange.currency,
-        formatted: `${data.salaryRange.currency.value || data.salaryRange.currency} ${data.salaryRange.min || '0'}-${data.salaryRange.max || '0'}`
+        formatted: `${
+          data.salaryRange.currency.value || data.salaryRange.currency
+        } ${data.salaryRange.min || "0"}-${data.salaryRange.max || "0"}`,
       },
       customFields: customFields.reduce((acc, { key, value, isMandatory }) => {
         if (key && value) acc[key] = { value, isMandatory };
         return acc;
-      }, {})
+      }, {}),
     };
     onSubmit(formattedJobPosting);
   };

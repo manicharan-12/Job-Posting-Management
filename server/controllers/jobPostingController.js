@@ -1,6 +1,6 @@
-const JobPosting = require('../models/JobPosting');
-const AuditTrail = require('../models/AuditTrail');
-const { parseISO, isBefore } = require('date-fns');
+const JobPosting = require("../models/JobPosting");
+const AuditTrail = require("../models/AuditTrail");
+const { parseISO, isBefore } = require("date-fns");
 
 // Create a new job posting
 exports.createJobPosting = async (req, res) => {
@@ -8,7 +8,9 @@ exports.createJobPosting = async (req, res) => {
     const jobPostingData = req.body;
 
     // Parse the applicationDeadline string to a Date object
-    jobPostingData.applicationDeadline = parseISO(jobPostingData.applicationDeadline);
+    jobPostingData.applicationDeadline = parseISO(
+      jobPostingData.applicationDeadline
+    );
 
     const newJobPosting = new JobPosting(jobPostingData);
     await newJobPosting.save();
@@ -18,7 +20,9 @@ exports.createJobPosting = async (req, res) => {
     });
   } catch (error) {
     console.error("Error creating job posting:", error);
-    res.status(500).json({ message: "Error creating job posting", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error creating job posting", error: error.message });
   }
 };
 
@@ -29,7 +33,9 @@ exports.getJobPostings = async (req, res) => {
     res.status(200).json(jobPostings);
   } catch (error) {
     console.error("Error fetching job postings:", error);
-    res.status(500).json({ message: "Error fetching job postings", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error fetching job postings", error: error.message });
   }
 };
 
@@ -43,7 +49,9 @@ exports.deleteJobPosting = async (req, res) => {
     res.status(200).json({ message: "Job posting deleted successfully" });
   } catch (error) {
     console.error("Error deleting job posting:", error);
-    res.status(500).json({ message: "Error deleting job posting", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error deleting job posting", error: error.message });
   }
 };
 
@@ -58,10 +66,17 @@ exports.duplicateJobPosting = async (req, res) => {
     duplicatedJob._id = undefined;
     duplicatedJob.isNew = true;
     await duplicatedJob.save();
-    res.status(201).json({ message: "Job posting duplicated successfully", jobPosting: duplicatedJob });
+    res
+      .status(201)
+      .json({
+        message: "Job posting duplicated successfully",
+        jobPosting: duplicatedJob,
+      });
   } catch (error) {
     console.error("Error duplicating job posting:", error);
-    res.status(500).json({ message: "Error duplicating job posting", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error duplicating job posting", error: error.message });
   }
 };
 
@@ -74,21 +89,39 @@ exports.updateJobPosting = async (req, res) => {
     }
 
     // If status is being changed from closed to active, ensure a new deadline is provided
-    if (jobPosting.status === 'closed' && req.body.status === 'active') {
+    if (jobPosting.status === "closed" && req.body.status === "active") {
       if (!req.body.applicationDeadline) {
-        return res.status(400).json({ message: "New application deadline is required to reactivate a closed job posting" });
+        return res
+          .status(400)
+          .json({
+            message:
+              "New application deadline is required to reactivate a closed job posting",
+          });
       }
       const newDeadline = parseISO(req.body.applicationDeadline);
       if (isBefore(newDeadline, new Date())) {
-        return res.status(400).json({ message: "New application deadline must be in the future" });
+        return res
+          .status(400)
+          .json({ message: "New application deadline must be in the future" });
       }
       req.body.applicationDeadline = newDeadline;
     }
 
-    const updatedJob = await JobPosting.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.status(200).json({ message: "Job posting updated successfully", jobPosting: updatedJob });
+    const updatedJob = await JobPosting.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res
+      .status(200)
+      .json({
+        message: "Job posting updated successfully",
+        jobPosting: updatedJob,
+      });
   } catch (error) {
     console.error("Error updating job posting:", error);
-    res.status(500).json({ message: "Error updating job posting", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error updating job posting", error: error.message });
   }
 };

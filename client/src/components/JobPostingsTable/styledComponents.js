@@ -1,11 +1,12 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const JobPostingsTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
 
-  th, td {
+  th,
+  td {
     padding: 12px;
     text-align: center;
     border-bottom: 1px solid #ddd;

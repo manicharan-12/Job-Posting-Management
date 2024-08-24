@@ -1,10 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: #ffffff;
   padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
   max-width: 1200px;
   margin: 0 auto;
 
@@ -62,9 +63,9 @@ export const BubbleContainer = styled.div`
 `;
 
 export const BubbleFilter = styled.button`
-  background-color: ${props => props.active ? '#3b82f6' : '#ffffff'};
-  color: ${props => props.active ? 'white' : '#4b5563'};
-  border: 2px solid ${props => props.active ? '#3b82f6' : '#d1d5db'};
+  background-color: ${(props) => (props.active ? "#3b82f6" : "#ffffff")};
+  color: ${(props) => (props.active ? "white" : "#4b5563")};
+  border: 2px solid ${(props) => (props.active ? "#3b82f6" : "#d1d5db")};
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 14px;
@@ -74,7 +75,7 @@ export const BubbleFilter = styled.button`
   min-width: 100px;
 
   &:hover {
-    background-color: ${props => props.active ? '#2563eb' : '#f3f4f6'};
+    background-color: ${(props) => (props.active ? "#2563eb" : "#f3f4f6")};
   }
 `;
 
@@ -178,8 +179,6 @@ export const EmptyMessage = styled.div`
   margin-top: 24px;
 `;
 
-
-
 // import styled from 'styled-components';
 
 // export const Container = styled.div`
@@ -217,7 +216,6 @@ export const EmptyMessage = styled.div`
 //   gap: 8px;
 // `;
 
-
 // export const BubbleFilter = styled.button`
 //   background-color: ${props => props.active ? '#000000' : '#ffffff'};
 //   color: ${props => props.active ? 'white' : '#000000'};
@@ -229,7 +227,6 @@ export const EmptyMessage = styled.div`
 //   transition: all 0.2s ease;
 //   width:120px;
 // `;
-
 
 // export const Table = styled.table`
 //   width: 100%;
@@ -313,7 +310,7 @@ export const EmptyMessage = styled.div`
 //   margin: 0 5px;
 //   border-radius: 4px;
 //   cursor: pointer;
-  
+
 //   &:hover {
 //     background-color: ${props => props.active ? '#2563eb' : '#e5e7eb'};
 //   }

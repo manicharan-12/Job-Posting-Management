@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const AuditTrailContainer = styled.div`
   font-family: Arial, sans-serif;

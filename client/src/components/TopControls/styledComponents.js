@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const TopControls = styled.div`
   display: flex;
@@ -54,7 +53,7 @@ export const CreateJobButton = styled.button`
   font-size: 14px;
   transition: background-color 0.3s;
   width: 15%;
-  height:40px;
+  height: 40px;
   &:hover {
     background-color: #2980b9;
   }

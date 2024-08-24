@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const JobPostingManagement = styled.div`
   max-width: 1200px;
@@ -19,7 +19,6 @@ export const Title = styled.h1`
   font-size: 28px;
   text-align: center;
 `;
-
 
 export const NoJobsMessage = styled.div`
   text-align: center;

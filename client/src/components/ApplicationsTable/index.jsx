@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import {
   Container,
   FilterContainer,
@@ -13,24 +13,44 @@ import {
   StatusDropdown,
   EmptyMessage,
   BubbleContainer,
-  BubbleFilter
-} from './styledComponents.js';
-import Pagination from '../Pagination';
+  BubbleFilter,
+} from "./styledComponents.js";
+import Pagination from "../Pagination";
 
-const ApplicationsTable = ({ candidates, onCandidateClick, shortlistedCandidates, candidateStatuses, onStatusUpdate }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [activeFilters, setActiveFilters] = useState(['All']);
+const ApplicationsTable = ({
+  candidates,
+  onCandidateClick,
+  shortlistedCandidates,
+  candidateStatuses,
+  onStatusUpdate,
+}) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeFilters, setActiveFilters] = useState(["All"]);
   const [filteredCandidates, setFilteredCandidates] = useState(candidates);
   const [currentPage, setCurrentPage] = useState(1);
   const candidatesPerPage = 10;
 
-  const statusOptions = useMemo(() => ['All', 'Under Review', 'Interview Scheduled', 'Shortlisted', 'Rejected', 'Hired'], []);
+  const statusOptions = useMemo(
+    () => [
+      "All",
+      "Under Review",
+      "Interview Scheduled",
+      "Shortlisted",
+      "Rejected",
+      "Hired",
+    ],
+    []
+  );
 
   const filterCandidates = useCallback(() => {
     return candidates.filter((candidate) => {
-      const nameMatch = candidate.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const candidateStatus = candidateStatuses[candidate.id] || 'Under Review';
-      const statusMatch = activeFilters.includes('All') || activeFilters.includes(candidateStatus);
+      const nameMatch = candidate.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+      const candidateStatus = candidateStatuses[candidate.id] || "Under Review";
+      const statusMatch =
+        activeFilters.includes("All") ||
+        activeFilters.includes(candidateStatus);
       return nameMatch && statusMatch;
     });
   }, [candidates, searchTerm, activeFilters, candidateStatuses]);
@@ -41,25 +61,31 @@ const ApplicationsTable = ({ candidates, onCandidateClick, shortlistedCandidates
     setCurrentPage(1);
   }, [filterCandidates]);
 
-  const handleStatusChange = useCallback((candidateId, newStatus) => {
-    onStatusUpdate(candidateId, newStatus);
-  }, [onStatusUpdate]);
+  const handleStatusChange = useCallback(
+    (candidateId, newStatus) => {
+      onStatusUpdate(candidateId, newStatus);
+    },
+    [onStatusUpdate]
+  );
 
   const toggleFilter = useCallback((filter) => {
     setActiveFilters((prevFilters) => {
-      if (filter === 'All') {
-        return ['All'];
+      if (filter === "All") {
+        return ["All"];
       }
       const newFilters = prevFilters.includes(filter)
         ? prevFilters.filter((f) => f !== filter)
-        : [...prevFilters.filter((f) => f !== 'All'), filter];
-      return newFilters.length === 0 ? ['All'] : newFilters;
+        : [...prevFilters.filter((f) => f !== "All"), filter];
+      return newFilters.length === 0 ? ["All"] : newFilters;
     });
   }, []);
 
   const indexOfLastCandidate = currentPage * candidatesPerPage;
   const indexOfFirstCandidate = indexOfLastCandidate - candidatesPerPage;
-  const currentCandidates = filteredCandidates.slice(indexOfFirstCandidate, indexOfLastCandidate);
+  const currentCandidates = filteredCandidates.slice(
+    indexOfFirstCandidate,
+    indexOfLastCandidate
+  );
 
   const handlePageChange = useCallback((pageNumber) => {
     setCurrentPage(pageNumber);
@@ -111,8 +137,10 @@ const ApplicationsTable = ({ candidates, onCandidateClick, shortlistedCandidates
                   <TableCell>{candidate.location}</TableCell>
                   <TableCell>
                     <StatusDropdown
-                      value={candidateStatuses[candidate.id] || 'Under Review'}
-                      onChange={(e) => handleStatusChange(candidate.id, e.target.value)}
+                      value={candidateStatuses[candidate.id] || "Under Review"}
+                      onChange={(e) =>
+                        handleStatusChange(candidate.id, e.target.value)
+                      }
                     >
                       {statusOptions.slice(1).map((status) => (
                         <option key={status} value={status}>
@@ -122,7 +150,9 @@ const ApplicationsTable = ({ candidates, onCandidateClick, shortlistedCandidates
                     </StatusDropdown>
                   </TableCell>
                   <TableCell>
-                    <ViewProfileButton onClick={() => onCandidateClick(candidate)}>
+                    <ViewProfileButton
+                      onClick={() => onCandidateClick(candidate)}
+                    >
                       View Profile
                     </ViewProfileButton>
                   </TableCell>
@@ -138,7 +168,10 @@ const ApplicationsTable = ({ candidates, onCandidateClick, shortlistedCandidates
           />
         </>
       ) : (
-        <EmptyMessage>No candidates match your search criteria. Please try adjusting your filters.</EmptyMessage>
+        <EmptyMessage>
+          No candidates match your search criteria. Please try adjusting your
+          filters.
+        </EmptyMessage>
       )}
     </Container>
   );
