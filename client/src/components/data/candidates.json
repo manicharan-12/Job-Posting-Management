@@ -1,0 +1,355 @@
+[
+    { 
+      "id" : 1,
+      "name": "Krish",
+      "email": "rahulsharma@outlook.com",
+      "phone": "+91 9876543210",
+      "highest_degree_obtained": "B.A. Economics",
+      "graduation_period": "2020-2023",
+      "gpa": "3.8", 
+      "linkedin_url": "https://www.linkedin.com/in/aisha-khan-12345678",
+      "portfolio_website": "https://aishakhan.com",
+      "summary": "Highly motivated marketing professional with 1 year of experience in social media marketing. Proven ability to develop and execute successful social media campaigns that drive brand awareness and engagement. Skilled in content creation, community management, and social media analytics.",
+      "languages": ["English", "Hindi (Fluent)"], 
+      "resume": "https://drive.google.com/file/d/1YtudMpfi7Q0S0eArN5JWKzMtAo2OC0DN/view",
+      "skills": ["Python", "Machine Learning", "Data Science", "SQL", "TensorFlow"],
+      "dob": "1995-04-15",
+      "location": "Bangalore, India",
+      "willing_to_relocate": "Yes",
+      "willing_to_travel": "Yes",
+      "awards": ["Dean's List (2022)", "Marketing Club Member of the Year (2023)"],
+      "applicationHistory" : [
+      {
+        "jobTitle": "Software Engineer",
+        "appliedDate": "2024-03-15",
+        "status": "Shortlisted"
+      },
+      {
+        "jobTitle": "Frontend Developer",
+        "appliedDate": "2024-02-28",
+        "status": "Rejected"
+      }
+    ]
+    },
+    {
+        "id" : 2,
+        "name": "Ravi",
+        "email": "rahulsharma@outlook.com",
+        "phone": "+91 9876543210",
+        "highest_degree_obtained": "B.A. Economics",
+        "graduation_period": "2020-2023",
+        "gpa": "3.8", 
+        "linkedin_url": "https://www.linkedin.com/in/aisha-khan-12345678",
+        "portfolio_website": "https://aishakhan.com",
+        "summary": "Highly motivated marketing professional with 1 year of experience in social media marketing. Proven ability to develop and execute successful social media campaigns that drive brand awareness and engagement. Skilled in content creation, community management, and social media analytics.",
+        "languages": ["English", "Hindi (Fluent)"], 
+        "resume": "https://drive.google.com/file/d/1YtudMpfi7Q0S0eArN5JWKzMtAo2OC0DN/view",
+        "skills": ["Python", "Machine Learning", "Data Science", "SQL", "TensorFlow"],
+        "dob": "1995-04-15",
+        "location": "Bangalore, India",
+        "willing_to_relocate": "Yes",
+        "willing_to_travel": "Yes",
+        "awards": ["Dean's List (2022)", "Marketing Club Member of the Year (2023)"],
+        "applicationHistory": [
+            {
+              "jobTitle": "Software Engineer",
+              "appliedDate": "2024-03-15",
+              "status": "Shortlisted"
+            },
+            {
+              "jobTitle": "Frontend Developer",
+              "appliedDate": "2024-02-28",
+              "status": "Rejected"
+            }
+        ]
+      },
+      {
+        "id" : 3,
+        "name": "Rohit Sharma",
+        "email": "rahulsharma@outlook.com",
+        "phone": "+91 9876543210",
+        "highest_degree_obtained": "B.A. Economics",
+        "graduation_period": "2020-2023",
+        "gpa": "3.8", 
+        "linkedin_url": "https://www.linkedin.com/in/aisha-khan-12345678",
+        "portfolio_website": "https://aishakhan.com",
+        "summary": "Highly motivated marketing professional with 1 year of experience in social media marketing. Proven ability to develop and execute successful social media campaigns that drive brand awareness and engagement. Skilled in content creation, community management, and social media analytics.",
+        "languages": ["English", "Hindi (Fluent)"], 
+        "resume": "https://drive.google.com/file/d/1YtudMpfi7Q0S0eArN5JWKzMtAo2OC0DN/view",
+        "skills": ["Python", "Machine Learning", "Data Science", "SQL", "TensorFlow"],
+        "dob": "1995-04-15",
+        "location": "Bangalore, India",
+        "willing_to_relocate": "Yes",
+        "willing_to_travel": "Yes",
+        "awards": ["Dean's List (2022)", "Marketing Club Member of the Year (2023)"],
+        "applicationHistory": [
+              {
+                "jobTitle": "Software Engineer",
+                "appliedDate": "2024-03-15",
+                "status": "Shortlisted"
+              },
+              {
+                "jobTitle": "Frontend Developer",
+                "appliedDate": "2024-02-28",
+                "status": "Rejected"
+              }
+        ]
+      },
+      {
+        "id" : 4,
+        "name": "Arjun",
+        "email": "rahulsharma@outlook.com",
+        "phone": "+91 9876543210",
+        "highest_degree_obtained": "B.A. Economics",
+        "graduation_period": "2020-2023",
+        "gpa": "3.8", 
+        "linkedin_url": "https://www.linkedin.com/in/aisha-khan-12345678",
+        "portfolio_website": "https://aishakhan.com",
+        "summary": "Highly motivated marketing professional with 1 year of experience in social media marketing. Proven ability to develop and execute successful social media campaigns that drive brand awareness and engagement. Skilled in content creation, community management, and social media analytics.",
+        "languages": ["English", "Hindi (Fluent)"], 
+        "resume": "https://drive.google.com/file/d/1YtudMpfi7Q0S0eArN5JWKzMtAo2OC0DN/view",
+        "skills": ["Python", "Machine Learning", "Data Science", "SQL", "TensorFlow"],
+        "dob": "1995-04-15",
+        "location": "Bangalore, India",
+        "willing_to_relocate": "Yes",
+        "willing_to_travel": "Yes",
+        "awards": ["Dean's List (2022)", "Marketing Club Member of the Year (2023)"],
+        "applicationHistory": [
+              {
+                "jobTitle": "Software Engineer",
+                "appliedDate": "2024-03-15",
+                "status": "Shortlisted"
+              },
+              {
+                "jobTitle": "Frontend Developer",
+                "appliedDate": "2024-02-28",
+                "status": "Rejected"
+              }
+        ]
+      },
+      {
+        "id" : 5,
+        "name": "Shyamala",
+        "email": "rahulsharma@outlook.com",
+        "phone": "+91 9876543210",
+        "highest_degree_obtained": "B.A. Economics",
+        "graduation_period": "2020-2023",
+        "gpa": "3.8", 
+        "linkedin_url": "https://www.linkedin.com/in/aisha-khan-12345678",
+        "portfolio_website": "https://aishakhan.com",
+        "summary": "Highly motivated marketing professional with 1 year of experience in social media marketing. Proven ability to develop and execute successful social media campaigns that drive brand awareness and engagement. Skilled in content creation, community management, and social media analytics.",
+        "languages": ["English", "Hindi (Fluent)"], 
+        "resume": "https://drive.google.com/file/d/1YtudMpfi7Q0S0eArN5JWKzMtAo2OC0DN/view",
+        "skills": ["Python", "Machine Learning", "Data Science", "SQL", "TensorFlow"],
+        "dob": "1995-04-15",
+        "location": "Bangalore, India",
+        "willing_to_relocate": "Yes",
+        "willing_to_travel": "Yes",
+        "awards": ["Dean's List (2022)", "Marketing Club Member of the Year (2023)"],
+        "applicationHistory": [
+              {
+                "jobTitle": "Software Engineer",
+                "appliedDate": "2024-03-15",
+                "status": "Shortlisted"
+              },
+              {
+                "jobTitle": "Frontend Developer",
+                "appliedDate": "2024-02-28",
+                "status": "Rejected"
+              }
+        ]
+      },
+      {
+        "id" : 6,
+        "name": "Priya Singh",
+        "email": "rahulsharma@outlook.com",
+        "phone": "+91 9876543210",
+        "highest_degree_obtained": "B.A. Economics",
+        "graduation_period": "2020-2023",
+        "gpa": "3.8", 
+        "linkedin_url": "https://www.linkedin.com/in/aisha-khan-12345678",
+        "portfolio_website": "https://aishakhan.com",
+        "summary": "Highly motivated marketing professional with 1 year of experience in social media marketing. Proven ability to develop and execute successful social media campaigns that drive brand awareness and engagement. Skilled in content creation, community management, and social media analytics.",
+        "languages": ["English", "Hindi (Fluent)"], 
+        "resume": "https://drive.google.com/file/d/1YtudMpfi7Q0S0eArN5JWKzMtAo2OC0DN/view",
+        "skills": ["Python", "Machine Learning", "Data Science", "SQL", "TensorFlow"],
+        "dob": "1995-04-15",
+        "location": "Bangalore, India",
+        "willing_to_relocate": "Yes",
+        "willing_to_travel": "Yes",
+        "awards": ["Dean's List (2022)", "Marketing Club Member of the Year (2023)"],
+        "applicationHistory": [
+              {
+                "jobTitle": "Software Engineer",
+                "appliedDate": "2024-03-15",
+                "status": "Shortlisted"
+              },
+              {
+                "jobTitle": "Frontend Developer",
+                "appliedDate": "2024-02-28",
+                "status": "Rejected"
+              }
+        ]
+      },
+      {
+        "id" : 7,
+        "name": "Lokesh",
+        "email": "rahulsharma@outlook.com",
+        "phone": "+91 9876543210",
+        "highest_degree_obtained": "B.A. Economics",
+        "graduation_period": "2020-2023",
+        "gpa": "3.8", 
+        "linkedin_url": "https://www.linkedin.com/in/aisha-khan-12345678",
+        "portfolio_website": "https://aishakhan.com",
+        "summary": "Highly motivated marketing professional with 1 year of experience in social media marketing. Proven ability to develop and execute successful social media campaigns that drive brand awareness and engagement. Skilled in content creation, community management, and social media analytics.",
+        "languages": ["English", "Hindi (Fluent)"], 
+        "resume": "https://drive.google.com/file/d/1YtudMpfi7Q0S0eArN5JWKzMtAo2OC0DN/view",
+        "skills": ["Python", "Machine Learning", "Data Science", "SQL", "TensorFlow"],
+        "dob": "1995-04-15",
+        "location": "Bangalore, India",
+        "willing_to_relocate": "Yes",
+        "willing_to_travel": "Yes",
+        "awards": ["Dean's List (2022)", "Marketing Club Member of the Year (2023)"],
+        "applicationHistory": [
+              {
+                "jobTitle": "Software Engineer",
+                "appliedDate": "2024-03-15",
+                "status": "Shortlisted"
+              },
+              {
+                "jobTitle": "Frontend Developer",
+                "appliedDate": "2024-02-28",
+                "status": "Rejected"
+              }
+        ]
+      },
+      {
+        "id" : 8,
+        "name": "Harman",
+        "email": "rahulsharma@outlook.com",
+        "phone": "+91 9876543210",
+        "highest_degree_obtained": "B.A. Economics",
+        "graduation_period": "2020-2023",
+        "gpa": "3.8", 
+        "linkedin_url": "https://www.linkedin.com/in/aisha-khan-12345678",
+        "portfolio_website": "https://aishakhan.com",
+        "summary": "Highly motivated marketing professional with 1 year of experience in social media marketing. Proven ability to develop and execute successful social media campaigns that drive brand awareness and engagement. Skilled in content creation, community management, and social media analytics.",
+        "languages": ["English", "Hindi (Fluent)"], 
+        "resume": "https://drive.google.com/file/d/1YtudMpfi7Q0S0eArN5JWKzMtAo2OC0DN/view",
+        "skills": ["Python", "Machine Learning", "Data Science", "SQL", "TensorFlow"],
+        "dob": "1995-04-15",
+        "location": "Bangalore, India",
+        "willing_to_relocate": "Yes",
+        "willing_to_travel": "Yes",
+        "awards": ["Dean's List (2022)", "Marketing Club Member of the Year (2023)"],
+        "applicationHistory": [
+              {
+                "jobTitle": "Software Engineer",
+                "appliedDate": "2024-03-15",
+                "status": "Shortlisted"
+              },
+              {
+                "jobTitle": "Frontend Developer",
+                "appliedDate": "2024-02-28",
+                "status": "Rejected"
+              }
+        ]
+      },
+      {
+        "id" : 9,
+        "name": "Siva Keshav",
+        "email": "rahulsharma@outlook.com",
+        "phone": "+91 9876543210",
+        "highest_degree_obtained": "B.A. Economics",
+        "graduation_period": "2020-2023",
+        "gpa": "3.8", 
+        "linkedin_url": "https://www.linkedin.com/in/aisha-khan-12345678",
+        "portfolio_website": "https://aishakhan.com",
+        "summary": "Highly motivated marketing professional with 1 year of experience in social media marketing. Proven ability to develop and execute successful social media campaigns that drive brand awareness and engagement. Skilled in content creation, community management, and social media analytics.",
+        "languages": ["English", "Hindi (Fluent)"], 
+        "resume": "https://drive.google.com/file/d/1YtudMpfi7Q0S0eArN5JWKzMtAo2OC0DN/view",
+        "skills": ["Python", "Machine Learning", "Data Science", "SQL", "TensorFlow"],
+        "dob": "1995-04-15",
+        "location": "Bangalore, India",
+        "willing_to_relocate": "Yes",
+        "willing_to_travel": "Yes",
+        "awards": ["Dean's List (2022)", "Marketing Club Member of the Year (2023)"],
+        "applicationHistory": [
+              {
+                "jobTitle": "Software Engineer",
+                "appliedDate": "2024-03-15",
+                "status": "Shortlisted"
+              },
+              {
+                "jobTitle": "Frontend Developer",
+                "appliedDate": "2024-02-28",
+                "status": "Rejected"
+              }
+        ]
+      },
+      {
+        "id" : 10,
+        "name": "Charnan",
+        "email": "rahulsharma@outlook.com",
+        "phone": "+91 9876543210",
+        "highest_degree_obtained": "B.A. Economics",
+        "graduation_period": "2020-2023",
+        "gpa": "3.8", 
+        "linkedin_url": "https://www.linkedin.com/in/aisha-khan-12345678",
+        "portfolio_website": "https://aishakhan.com",
+        "summary": "Highly motivated marketing professional with 1 year of experience in social media marketing. Proven ability to develop and execute successful social media campaigns that drive brand awareness and engagement. Skilled in content creation, community management, and social media analytics.",
+        "languages": ["English", "Hindi (Fluent)"], 
+        "resume": "https://drive.google.com/file/d/1YtudMpfi7Q0S0eArN5JWKzMtAo2OC0DN/view",
+        "skills": ["Python", "Machine Learning", "Data Science", "SQL", "TensorFlow"],
+        "dob": "1995-04-15",
+        "location": "Bangalore, India",
+        "willing_to_relocate": "Yes",
+        "willing_to_travel": "Yes",
+        "awards": ["Dean's List (2022)", "Marketing Club Member of the Year (2023)"],
+        "applicationHistory": [
+              {
+                "jobTitle": "Software Engineer",
+                "appliedDate": "2024-03-15",
+                "status": "Shortlisted"
+              },
+              {
+                "jobTitle": "Frontend Developer",
+                "appliedDate": "2024-02-28",
+                "status": "Rejected"
+              }
+        ]
+      },
+      {
+        "id" : 11,
+        "name": "Vikram Singh",
+        "email": "rahulsharma@outlook.com",
+        "phone": "+91 9876543210",
+        "highest_degree_obtained": "B.A. Economics",
+        "graduation_period": "2020-2023",
+        "gpa": "3.8", 
+        "linkedin_url": "https://www.linkedin.com/in/aisha-khan-12345678",
+        "portfolio_website": "https://aishakhan.com",
+        "summary": "Highly motivated marketing professional with 1 year of experience in social media marketing. Proven ability to develop and execute successful social media campaigns that drive brand awareness and engagement. Skilled in content creation, community management, and social media analytics.",
+        "languages": ["English", "Hindi (Fluent)"], 
+        "resume": "https://drive.google.com/file/d/1YtudMpfi7Q0S0eArN5JWKzMtAo2OC0DN/view",
+        "skills": ["Python", "Machine Learning", "Data Science", "SQL", "TensorFlow"],
+        "dob": "1995-04-15",
+        "location": "Bangalore, India",
+        "willing_to_relocate": "Yes",
+        "willing_to_travel": "Yes",
+        "awards": ["Dean's List (2022)", "Marketing Club Member of the Year (2023)"],
+        "applicationHistory": [
+              {
+                "jobTitle": "Software Engineer",
+                "appliedDate": "2024-03-15",
+                "status": "Shortlisted"
+              },
+              {
+                "jobTitle": "Frontend Developer",
+                "appliedDate": "2024-02-28",
+                "status": "Rejected"
+              }
+        ]
+      }
+]
+  
