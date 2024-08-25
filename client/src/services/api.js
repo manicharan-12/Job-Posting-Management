@@ -1,5 +1,6 @@
 import axios from "axios";
-
+//https://job-posting-management.onrender.com
+//http://localhost:5000
 const API_URL = "https://job-posting-management.onrender.com";
 
 const api = axios.create({
@@ -84,6 +85,8 @@ export const updateJobPosting = async (id, jobPosting) => {
     const response = await api.put(`/job-postings/${id}`, jobPosting);
     return response.data;
   } catch (error) {
+    console.log(error);
+
     return handleApiError({ error: "Failed to update job Posting" });
   }
 };
@@ -105,5 +108,32 @@ export const getAuditTrailForJob = async (jobId) => {
     return response.data;
   } catch (error) {
     return handleApiError({ error: "Failed to fetch audit trail entries" });
+  }
+};
+
+export const getAllTemplates = async () => {
+  try {
+    const response = await api.get("/templates");
+    return response.data;
+  } catch (error) {
+    return handleApiError({ error: "Failed to fetch templates" });
+  }
+};
+
+export const createTemplate = async (template) => {
+  try {
+    const response = await api.post("/templates", template);
+    return response.data;
+  } catch (error) {
+    return handleApiError({ error: "Failed to create template" });
+  }
+};
+
+export const deleteTemplate = async (id) => {
+  try {
+    const response = await api.delete(`/templates/${id}`);
+    return response.data;
+  } catch (error) {
+    return handleApiError({ error: "Failed to delete template" });
   }
 };

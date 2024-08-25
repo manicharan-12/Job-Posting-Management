@@ -23,7 +23,11 @@ import {
   updateJobPosting,
   createAuditTrailEntry,
   getAuditTrailForJob,
+  getAllTemplates,
+  createTemplate,
+  deleteTemplate,
 } from "../../services/api";
+import { ThreeDots } from "react-loader-spinner";
 
 const cities = cityData[2].data;
 const currencies = currencyData.map((cur) => cur.code);
@@ -40,48 +44,31 @@ const JobPostingDashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isCreateWithTemplate, setIsCreateWithTemplate] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState(null);
-  const [savedTemplates, setSavedTemplates] = useState([]);
   const postsPerPage = 10;
+  const [templates, setTemplates] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchJobPostingsAndAuditTrail = async () => {
       try {
-        const [jobPostingsResponse, auditTrailResponse] = await Promise.all([
-          getAllJobPosting(),
-          getAuditTrailForJob("all"),
-        ]);
+        const [jobPostingsResponse, auditTrailResponse, templatesResponse] =
+          await Promise.all([
+            getAllJobPosting(),
+            getAuditTrailForJob("all"),
+            getAllTemplates(),
+          ]);
         setJobPostings(jobPostingsResponse);
         setAuditTrail(auditTrailResponse);
+        setTemplates(templatesResponse);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchJobPostingsAndAuditTrail();
   }, []);
-
-  useEffect(() => {
-    const fetchJobPostings = async () => {
-      try {
-        const response = await getAllJobPosting();
-        setJobPostings(response);
-      } catch (error) {
-        console.error("Error fetching job postings:", error);
-      }
-    };
-    fetchJobPostings();
-  }, [jobPostings]);
-
-  useEffect(() => {
-    const fetchAuditTrail = async () => {
-      try {
-        const auditTrailResponse = await getAuditTrailForJob("all");
-        setAuditTrail(auditTrailResponse);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchAuditTrail();
-  }, [auditTrail]);
 
   const handlePreviewJobPosting = (jobPosting) => {
     setPreviewJobPosting(jobPosting);
@@ -92,32 +79,24 @@ const JobPostingDashboard = () => {
   };
 
   const handleStatusChange = async (id, newStatus) => {
+    setIsLoading(true);
     try {
-      // Find the job posting to update
       const jobToUpdate = jobPostings.find((posting) => posting._id === id);
 
       if (!jobToUpdate) {
         console.error("Job posting not found");
         return;
       }
-
-      // Create an updated job posting object with the new status
       const updatedJobPosting = {
         ...jobToUpdate,
         status: newStatus,
       };
-
-      // Call the API to update the job posting
       const response = await updateJobPosting(id, updatedJobPosting);
-
-      // Update the local state with the updated job posting
       setJobPostings((prev) =>
         prev.map((posting) =>
           posting._id === id ? response.jobPosting : posting
         )
       );
-
-      // Add to audit trail
       await addToAuditTrail(
         id,
         "Status Change",
@@ -125,11 +104,13 @@ const JobPostingDashboard = () => {
       );
     } catch (error) {
       console.error("Error updating job posting status:", error);
-      // Optionally, you can show an error message to the user here
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleDeletePosting = async (id) => {
+    setIsLoading(true);
     try {
       await deleteJobPosting(id);
       setJobPostings((prev) => prev.filter((posting) => posting._id !== id));
@@ -137,10 +118,13 @@ const JobPostingDashboard = () => {
       setPreviewJobPosting(null);
     } catch (error) {
       console.error("Error deleting job posting:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleDuplicatePosting = async (posting) => {
+    setIsLoading(true);
     try {
       const response = await duplicateJobPosting(posting._id);
       const duplicatedPosting = response.jobPosting;
@@ -152,17 +136,18 @@ const JobPostingDashboard = () => {
       );
     } catch (error) {
       console.error("Error duplicating job posting:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleCreateJobPosting = async (newJobPosting, isDraft = false) => {
+    setIsLoading(true);
     try {
       const jobPostingWithStatus = {
         ...newJobPosting,
         status: isDraft ? "draft" : "active",
       };
-
-      // Ensure required fields are present
       if (
         !jobPostingWithStatus.jobTitle ||
         !jobPostingWithStatus.jobType ||
@@ -190,12 +175,14 @@ const JobPostingDashboard = () => {
       );
     } catch (error) {
       console.error("Error creating job posting:", error);
-      // Show an error message to the user
       alert(error.message || "Failed to create job posting. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleEditJobPosting = async (updatedJobPosting, isDraft = false) => {
+    setIsLoading(true);
     try {
       const editedPosting = {
         ...updatedJobPosting,
@@ -231,6 +218,37 @@ const JobPostingDashboard = () => {
       );
     } catch (error) {
       console.error("Error updating job posting:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const handleSaveTemplate = async (templateData) => {
+    setIsLoading(true);
+    try {
+      const response = await createTemplate(templateData);
+      setTemplates((prev) => [...prev, response.template]);
+      alert("Template saved successfully!");
+    } catch (error) {
+      console.error("Error saving template:", error);
+      alert("Failed to save template. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleDeleteTemplate = async (templateId) => {
+    setIsLoading(true);
+    try {
+      await deleteTemplate(templateId);
+      setTemplates((prev) =>
+        prev.filter((template) => template._id !== templateId)
+      );
+      alert("Template deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting template:", error);
+      alert("Failed to delete template. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -239,20 +257,22 @@ const JobPostingDashboard = () => {
       jobId,
       action,
       description,
-      recruiter: "Current User", // You might want to replace this with actual user information
+      recruiter: "Current User",
     };
-
+    setIsLoading(true);
     try {
       const response = createAuditTrailEntry(auditEntry);
       const newAuditEntry = response.data.auditEntry;
       setAuditTrail((prev) => [newAuditEntry, ...prev]);
     } catch (error) {
       console.error("Error adding audit trail entry:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleOpenNewJobForm = () => {
-    if (savedTemplates.length === 0) {
+    if (templates.length === 0) {
       setIsPopupOpen(true);
       setShowConfirmation(false);
       setEditingJob(null);
@@ -307,78 +327,93 @@ const JobPostingDashboard = () => {
     <JobPostingManagement>
       <JobPostingDashboardContainer>
         <Title>Job Postings</Title>
-
-        {isCreateWithTemplate && (
-          <TemplateSelector
-            onSelect={(template) => {
-              setSelectedTemplate(template);
-              setIsCreateWithTemplate(false);
-              setIsPopupOpen(true);
+        {isLoading ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "60vh",
             }}
-            onCancel={() => setIsCreateWithTemplate(false)}
-            savedTemplates={savedTemplates}
-          />
+          >
+            <ThreeDots color="#00BFFF" height={80} width={80} />
+          </div>
+        ) : (
+          <>
+            {isCreateWithTemplate && (
+              <TemplateSelector
+                onSelect={(template) => {
+                  setSelectedTemplate(template);
+                  setIsCreateWithTemplate(false);
+                  setIsPopupOpen(true);
+                }}
+                onCancel={() => setIsCreateWithTemplate(false)}
+                savedTemplates={templates}
+                onDeleteTemplate={handleDeleteTemplate}
+              />
+            )}
+
+            {isPopupOpen && (
+              <JobPostingForm
+                onSubmit={
+                  editingJob ? handleEditJobPosting : handleCreateJobPosting
+                }
+                onPreview={handlePreviewJobPosting}
+                onClose={() => {
+                  setIsPopupOpen(false);
+                  setEditingJob(null);
+                  setSelectedTemplate(null);
+                }}
+                jobOptions={jobList.map((job) => ({ value: job, label: job }))}
+                cities={cities}
+                currencies={currencies}
+                editingJob={editingJob}
+                template={selectedTemplate}
+                savedTemplates={templates}
+                onSaveTemplate={handleSaveTemplate}
+                setIsPopupOpen={setIsPopupOpen}
+                setShowConfirmation={setShowConfirmation}
+              />
+            )}
+
+            {previewJobPosting && (
+              <JobPostingPreview
+                jobPosting={previewJobPosting}
+                onClose={handleClosePreview}
+              />
+            )}
+
+            <ConfirmationDialog
+              show={showConfirmation}
+              onClose={() => setShowConfirmation(false)}
+              onCreateAnother={handleOpenNewJobForm}
+            />
+
+            <TopControls
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              filterStatus={filterStatus}
+              setFilterStatus={setFilterStatus}
+              onCreateNewJob={handleOpenNewJobForm}
+            />
+
+            <JobPostingsTable
+              jobPostings={currentPosts}
+              onStatusChange={handleStatusChange}
+              onPreview={handlePreviewJobPosting}
+              onEdit={handleOpenEditJobForm}
+              onDelete={handleDeletePosting}
+              onDuplicate={handleDuplicatePosting}
+            />
+
+            <Pagination
+              currentPage={currentPage}
+              totalPosts={filteredJobPostings.length}
+              postsPerPage={postsPerPage}
+              paginate={paginate}
+            />
+          </>
         )}
-
-        {isPopupOpen && (
-          <JobPostingForm
-            onSubmit={
-              editingJob ? handleEditJobPosting : handleCreateJobPosting
-            }
-            onPreview={handlePreviewJobPosting}
-            onClose={() => {
-              setIsPopupOpen(false);
-              setEditingJob(null);
-              setSelectedTemplate(null);
-            }}
-            jobOptions={jobList.map((job) => ({ value: job, label: job }))}
-            cities={cities}
-            currencies={currencies}
-            editingJob={editingJob}
-            template={selectedTemplate}
-            savedTemplates={savedTemplates}
-            setSavedTemplates={setSavedTemplates}
-            setIsPopupOpen={setIsPopupOpen}
-            setShowConfirmation={setShowConfirmation}
-          />
-        )}
-
-        {previewJobPosting && (
-          <JobPostingPreview
-            jobPosting={previewJobPosting}
-            onClose={handleClosePreview}
-          />
-        )}
-
-        <ConfirmationDialog
-          show={showConfirmation}
-          onClose={() => setShowConfirmation(false)}
-          onCreateAnother={handleOpenNewJobForm}
-        />
-
-        <TopControls
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          filterStatus={filterStatus}
-          setFilterStatus={setFilterStatus}
-          onCreateNewJob={handleOpenNewJobForm}
-        />
-
-        <JobPostingsTable
-          jobPostings={currentPosts}
-          onStatusChange={handleStatusChange}
-          onPreview={handlePreviewJobPosting}
-          onEdit={handleOpenEditJobForm}
-          onDelete={handleDeletePosting}
-          onDuplicate={handleDuplicatePosting}
-        />
-
-        <Pagination
-          currentPage={currentPage}
-          totalPosts={filteredJobPostings.length}
-          postsPerPage={postsPerPage}
-          paginate={paginate}
-        />
       </JobPostingDashboardContainer>
       <AuditTrail auditTrail={auditTrail} />
     </JobPostingManagement>

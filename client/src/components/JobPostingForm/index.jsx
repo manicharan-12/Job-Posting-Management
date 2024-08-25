@@ -3,7 +3,6 @@ import Select from "react-select";
 import AsyncSelect from "react-select/async";
 import languageData from "../data/language.json";
 import { useForm, Controller } from "react-hook-form";
-import { v4 as uuidv4 } from "uuid";
 import skillsData from "../data/skills.json";
 import departmentOptions from "../data/departments.js";
 import {
@@ -84,7 +83,7 @@ const JobPostingForm = (props) => {
     currencies,
     editingJob,
     template,
-    setSavedTemplates,
+    onSaveTemplate,
     setIsPopupOpen,
     setShowConfirmation,
   } = props;
@@ -114,11 +113,15 @@ const JobPostingForm = (props) => {
     }
 
     const templateToSave = {
-      ...currentValues,
-      id: uuidv4(),
-      customFields,
+      name: currentValues.jobTitle.label || currentValues.jobTitle,
+      content: {
+        ...currentValues,
+        customFields,
+      },
     };
-    setSavedTemplates((prev) => [...prev, templateToSave]);
+
+    onSaveTemplate(templateToSave);
+
     setIsPopupOpen(false);
     setShowConfirmation(true);
   };

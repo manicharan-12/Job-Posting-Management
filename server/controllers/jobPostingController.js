@@ -66,12 +66,10 @@ exports.duplicateJobPosting = async (req, res) => {
     duplicatedJob._id = undefined;
     duplicatedJob.isNew = true;
     await duplicatedJob.save();
-    res
-      .status(201)
-      .json({
-        message: "Job posting duplicated successfully",
-        jobPosting: duplicatedJob,
-      });
+    res.status(201).json({
+      message: "Job posting duplicated successfully",
+      jobPosting: duplicatedJob,
+    });
   } catch (error) {
     console.error("Error duplicating job posting:", error);
     res
@@ -91,12 +89,10 @@ exports.updateJobPosting = async (req, res) => {
     // If status is being changed from closed to active, ensure a new deadline is provided
     if (jobPosting.status === "closed" && req.body.status === "active") {
       if (!req.body.applicationDeadline) {
-        return res
-          .status(400)
-          .json({
-            message:
-              "New application deadline is required to reactivate a closed job posting",
-          });
+        return res.status(400).json({
+          message:
+            "New application deadline is required to reactivate a closed job posting",
+        });
       }
       const newDeadline = parseISO(req.body.applicationDeadline);
       if (isBefore(newDeadline, new Date())) {
@@ -112,12 +108,10 @@ exports.updateJobPosting = async (req, res) => {
       req.body,
       { new: true }
     );
-    res
-      .status(200)
-      .json({
-        message: "Job posting updated successfully",
-        jobPosting: updatedJob,
-      });
+    res.status(200).json({
+      message: "Job posting updated successfully",
+      jobPosting: updatedJob,
+    });
   } catch (error) {
     console.error("Error updating job posting:", error);
     res

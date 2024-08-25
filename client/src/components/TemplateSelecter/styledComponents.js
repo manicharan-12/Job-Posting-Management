@@ -94,3 +94,12 @@ export const CancelButton = styled(Button)`
     background-color: #c0392b;
   }
 `;
+
+export const DeleteButton = styled(Button)`
+  background-color: #e74c3c;
+  color: white;
+
+  &:hover {
+    background-color: #c0392b;
+  }
+`;
